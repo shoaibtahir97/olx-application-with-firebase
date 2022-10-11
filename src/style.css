@@ -1,0 +1,19 @@
+.carousel-img{
+    width: 100%;
+}
+
+.carousel {
+    margin: 20px 0px 20px 0;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.navbar .container .collapse  {
+    justify-content: flex-end;
+}
+
