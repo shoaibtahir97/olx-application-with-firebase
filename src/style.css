@@ -41,7 +41,7 @@
     flex-direction: column;
 }
 
-.modal-header p {
+.modal-header.privacy {
     text-align: center;
 }
 
@@ -73,5 +73,44 @@
     width: 50%;
     text-align: center;
     font-size: 14px;
+}
+
+.modal-header2{
+    padding: 10px 20px;
+    text-align: center;
+    /* width: 70%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-header2 img{
+    margin: 20px auto;
+}
+
+.modal-header2.mb-3{
+    /* width: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.mb-3 label{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.mb-3 button{
+    width: 100%;
+    margin-top: 40px;
+    border-radius: 2px;
+}
+
+.modal-header2 #modal-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 

@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
-import {getFirestore, collection, addDoc} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
+import {getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
+import {getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,41 +22,54 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-const db = getFirestore(app)
+const db = getFirestore(app);
+
+const storage = getStorage(app);
 
 
 function signInFirebase(email, password){
-    return signin
+    return signInWithEmailAndPassword(auth, email, password)
 }
 
 
 async function signUpNewUser(userInfo){
-    const {email, password} = userInfo
-    await createUserWithEmailAndPassword(auth, email, password)
-    await addUserToDB(userInfo)
-
-    // Asynchronous functions 
-    // .then((userCredential) => {
-    //     // Signed in 
-    //     const user = userCredential.user;
-    //     // ...
-    //     alert("User successfully registered");
-    //     addUserToDB(userInfo)
-    // })
-    // .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // console.log("Error --->", errorMessage);
-    //     error  = errorMessage;
-    //     // ..
-    // });
+    const {email, password, name} = userInfo
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password, name)
+    await addUserToDB(userInfo, userCredential.user.uid)
 }
 
-function addUserToDB(userInfo){
-    const {email, fullname, age } = userInfo
-    return addDoc(collection (db, "users"),{email, fullname, age})
+
+function addUserToDB(userInfo, uid){
+    const {email, name} = userInfo
+    return setDoc(doc (db, "users", uid),{email, name})
 }
+
+function postAdToDB(adTitle, adDescription, adPrice, imageUrl){
+    const userId = auth.currentUser.uid;
+    return addDoc(collection(db, "ads"), {adTitle, adDescription, adPrice, userId, imageUrl})
+}
+
+async function uploadImage(image) {
+    const storageRef = ref(storage, `images/${image.name}`)
+    const snapshot = await uploadBytes(storageRef, image)
+    const url = await getDownloadURL(snapshot.ref)
+    return url;
+}
+
+async function getAdsFromDb(){  
+    const querySnapshot = await getDocs(collection(db, "ads")) //DB se data le rhe hain aur variable me save horha hai
+    const ads = []; //empty array create ki hai kis me data from DB push hoga
+    querySnapshot.forEach((doc)=> { // variable pe for loop laga hai jis me doc 
+        ads.push({id:doc.id, ...doc.data()}) //
+    });
+    return ads;
+}
+
 
 export{
-    signUpNewUser
+    signUpNewUser,
+    signInFirebase,
+    postAdToDB,
+    uploadImage,
+    getAdsFromDb
 }
