@@ -17,40 +17,80 @@
     justify-content: flex-end;
 }
 
-.navbar .container .collapse .navbar-nav  {
-    align-items: center;
+.navbar-nav{
+    display: flex;
+    /* align-items: center; */
 }
 
 .sellBtn{
     position: relative;
 }
 
-.sellText{
+.centered{
     position: absolute;
-    bottom: 25%;
-    left: 25%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: black;
-    text-transform: uppercase;
+    width: 54px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.modal-header{
+@media only screen and (max-width: 991px){
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 7%;
+        transform: translate(-50%, -50%);
+
+    }
+}
+@media only screen and (max-width: 767px){
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+
+    }
+}
+
+@media only screen and (max-width: 425px){
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 12%;
+        transform: translate(-50%, -50%);
+
+    }
+}
+@media only screen and (max-width: 325px){
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 14%;
+        transform: translate(-50%, -50%);
+
+    }
+}
+.centered > span {
+    color: black;
+}
+ 
+.modal-header {
     display: flex;
     flex-direction: column;
 }
 
+/*
 .modal-header.privacy {
     text-align: center;
-}
+} */
 
 .login-account{
     display: flex;
     flex-direction: column;
     width: 60%;
     text-align: left;
-    height: 300px; 
+    /* height: 300px;  */
 }
 
 .login-account a{
