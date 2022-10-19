@@ -49,11 +49,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <img src="../images/olx-logo-vector-removebg-preview.png" width="120" alt="">
                     <p>WELCOME TO OLX</p>
-                    <p>The trusted community of <br> buyers and sellers.</p>
+                    <p class="tag-line">The trusted community of <br> buyers and sellers.</p>
                     <div class="login-account">
                       <!-- <a href="">Continue with Google</a>
                       <a href="">Continue with Facebook</a> -->
-                      <a href="" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Continue with Email</a>
+                      <a class="continue" href="" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        Continue with Email
+                      </a>
                       <!-- <a href="">Continue with Phone</a> -->
                     </div>
                     <p class="privacy">By continuing, you are accepting
@@ -76,23 +79,52 @@
                     </div>
                     <img src="../images/olx-logo-vector-removebg-preview.png" width="50" alt="">
                     <div class="mb-3">
-                      <!-- <label for="exampleInputEmail1" class="form-label">Enter your Email</label> -->
-                      <!-- <input type="email" class="form-control" id="email" placeholder="email" aria-describedby="emailHelp"> -->
-                      <input type="text" name="name" id="name" placeholder="Enter Name">
+                      <label for="exampleInputEmail1" class="form-label">Sign Up</label>
+                      <input required type="text" class="form-control" id="name" placeholder="Name" />
                       <br>
-                      <input type="email" name="" id="email" placeholder="Enter Email">
+                      <input required type="email" class="form-control" id="email" placeholder="Email"
+                        aria-describedby="emailHelp">
                       <br>
-                      <input type="text" name="" id="password" placeholder="password">
+                      <input required type="password" class="form-control" id="password" placeholder="Password" />
                       <br>
-                      <button onclick="signUp()">Sign up</button>
-                      <br>
-                      <button onclick="signIn()" class="btn btn-primary">Login</button>
+                      <span>Already registered?
+                        <a class="btn btn-link" data-bs-toggle="modal" href="#exampleModalToggle3"
+                          role="button">Login</a>
+                      </span>
+                      <button id="signup-btn" onclick="signUp()" class="btn btn-primary">Sign Up</button>
 
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- Modal 3 -->
+            <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header2">
+                    <div id="modal-buttons">
+                      <button class="btn " data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><i
+                          class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <img src="../images/olx-logo-vector-removebg-preview.png" width="50" alt="">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Log in</label>
+                      
+                      <input required type="email" class="form-control" id="email" placeholder="Email"
+                        aria-describedby="emailHelp">
+                      <br>
+                      <input required type="password" class="form-control" id="password" placeholder="Password" />
+                      <br>
+                      
+                      <button onclick="login()" class="btn btn-primary">Log in</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Link to First Modal -->
             <a class="nav-link" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
           </li>

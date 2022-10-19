@@ -80,6 +80,18 @@
     flex-direction: column;
 }
 
+.tag-line{
+    text-align: center;
+}
+
+.fa-envelope{
+    margin-right: 10px;
+}
+
+.continue{
+    text-align: center;
+}
+
 /*
 .modal-header.privacy {
     text-align: center;

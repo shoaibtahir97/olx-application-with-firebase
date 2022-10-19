@@ -7,7 +7,9 @@ window.signUp = async function (){
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
+    const signupBtn = document.getElementById("signup-btn");
 
+    signupBtn.setAttribute("disabled");
     
     try{
         await signUpNewUser({email, password, name})
