@@ -79,7 +79,7 @@
                     </div>
                     <img src="../images/olx-logo-vector-removebg-preview.png" width="50" alt="">
                     <div class="mb-3">
-                      <!-- <form onsubmit="signUp(); return false"> -->
+                      <form onsubmit="signUp(); return false">
                         <label for="exampleInputEmail1" class="form-label">Sign Up</label>
                         <input required type="text" class="form-control" id="name" placeholder="Name" />
                         <br>
@@ -92,10 +92,9 @@
                           <a class="btn btn-link" data-bs-toggle="modal" href="#exampleModalToggle3"
                           role="button">Login</a>
                         </span> <br>
-                        <small id="success"></small>
                         <small id="error"></small>
-                        <button id="signup-btn" onclick="signUp()" type="submit" class="btn btn-primary">Sign Up</button>
-                      <!-- </form> -->
+                        <button id="signup-btn" type="submit" class="btn btn-primary">Sign Up</button>
+                      </form>
 
                     </div>
                   </div>
@@ -114,15 +113,17 @@
                     </div>
                     <img src="../images/olx-logo-vector-removebg-preview.png" width="50" alt="">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Log in</label>
-                      
-                      <input required type="email" class="form-control" id="email" placeholder="Email"
+                      <form onsubmit="login(); return false">
+                        <label for="exampleInputEmail1" class="form-label">Log in</label>
+                        
+                        <input required type="email" class="form-control" id="login-email" placeholder="Email"
                         aria-describedby="emailHelp">
-                      <br>
-                      <input required type="password" class="form-control" id="password" placeholder="Password" />
-                      <br>
-                      
-                      <button onclick="login()" class="btn btn-primary">Log in</button>
+                        <br>
+                        <input required type="password" class="form-control" id="login-password" placeholder="Password" />
+                        <br>
+                        <small id="login-error"></small>
+                        <button id="loginBtn" class="btn btn-primary">Log in</button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -133,8 +134,8 @@
             <a class="nav-link" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
           </li>
           <li class="nav-item">
-            <a href="nav-link">
-              <div class="sellBtn">
+            <a href="postAd.html" >
+              <div class="sellBtn" >
                 <img src="../images/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg" alt="">
                 <div class="centered">
                   <img src="../images/iconPlusSell.svg" alt="">
@@ -189,7 +190,7 @@
     <input type="number" name="" id="price" placeholder="Ad price">
     <input type="file" name="" id="image" placeholder="Ad image">
 
-    <button onclick="postAd()">Post Ad</button>
+    <button >Post Ad</button>
 
   </div>
 

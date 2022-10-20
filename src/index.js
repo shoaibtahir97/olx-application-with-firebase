@@ -1,4 +1,4 @@
-import {signUpNewUser, signInFirebase, postAdToDB, uploadImage} from '../config/firebase.js'
+import {signUpNewUser, signInFirebase, postAdToDB, uploadImage, isUserLogIn} from '../config/firebase.js'
 
 getAds()
 
@@ -12,10 +12,8 @@ window.signUp = async function (){
         signupBtn.setAttribute("disabled", "");
         await signUpNewUser({email, password, name})
         
-        const successElem = document.getElementById("success");
-        successElem.innerContent = "Successfully Registered";    
-        
-        console.log("Successfully Registered")
+        console.log("Successfully Registered");
+
     }
     catch(e){
         const errorElem = document.getElementById("error");
@@ -24,20 +22,32 @@ window.signUp = async function (){
 }
 
 window.login = async function (){
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const loginEmail = document.getElementById("login-email").value;
+    const loginPassword = document.getElementById("login-password").value;
     // const closeModal = document.getElementById("closeModal")
 
     try{
-        await signInFirebase(email, password);
-        alert("Logged in Successfully")
-        // closeModal.setAttribute("data-bs-dismiss","modal")
+        const loginBtn = document.getElementById("loginBtn");
+        loginBtn.setAttribute("disabled", "");
+        await signInFirebase(loginEmail, loginPassword);
+        
+        alert("Logged in Successfully");
 
     }
     catch(e){
-        console.log("Error -->", e.message);
+        const loginError = document.getElementById("login-error");
+        loginError.innerHTML = e.message;
     }
 }
+
+// window.loginAndSell = function(){
+//     try{
+//         isUserLogIn()
+//     }
+//     catch(e){
+//         e.message
+//     }
+// }
 
 window.postAd = async function(){
     const adTitle = document.getElementById("title").value;
@@ -54,18 +64,18 @@ window.postAd = async function(){
     }
 } 
 
-async function getAds(){
-    const ads = await getAdsFromDb();
-    const adsElem = document.getElementById("ads");
+// async function getAds(){
+//     const ads = await getAdsFromDb();
+//     const adsElem = document.getElementById("ads");
 
 
-    for(let item of ads){
-        adsElem.innerHTMl += `
-        <div>
+//     for(let item of ads){
+//         adsElem.innerHTMl += `
+//         <div>
         
-        </div>` 
-    }
-}
+//         </div>` 
+//     }
+// }
 
 
 /*

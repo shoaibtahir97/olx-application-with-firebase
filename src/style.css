@@ -147,7 +147,7 @@
     justify-items: center;
 }
 
-#error{
+#error, #login-error{
     font-weight: bold;
     color: red;
     

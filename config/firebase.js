@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 import {getFirestore, collection, addDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
 import {getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js"
 
@@ -45,6 +45,7 @@ function addUserToDB(userInfo, uid){
 }
 
 function postAdToDB(adTitle, adDescription, adPrice, imageUrl){
+    
     const userId = auth.currentUser.uid;
     return addDoc(collection(db, "ads"), {adTitle, adDescription, adPrice, userId, imageUrl})
 }
@@ -65,11 +66,27 @@ async function getAdsFromDb(){
     return ads;
 }
 
+window.isUserLogIn = function() {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+          console.log(uid)
+          // ...
+        } else {
+          // User is signed out
+          // ...
+          console.log("no user log in")
+        }
+      });
+}
 
 export{
     signUpNewUser,
     signInFirebase,
     postAdToDB,
     uploadImage,
-    getAdsFromDb
+    getAdsFromDb,
+    isUserLogIn
 }

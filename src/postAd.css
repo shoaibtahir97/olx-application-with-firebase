@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+}
+.navbar .container-fluid{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start !important; 
+}
+
+.post-ad{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.post-ad > h5{
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.ad-details{
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.ad-details > h5 {
+    padding: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid  black;
+}
+
+.some-details{
+    padding: 20px;
+    border-bottom: 1px solid black;
+
+}
+
+.some-details > h5{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+input{
+    width: 100%;
+}
+
+.post-now{
+    padding: 20px;
+}
+
+.post-Btn{
+    color: white;
+    background-color: #072F34;
+    border: none;
+    padding: 10px 30px;
+    font-weight: bold;
+}
