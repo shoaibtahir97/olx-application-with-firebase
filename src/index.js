@@ -7,23 +7,23 @@ window.signUp = async function (){
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
-    const signupBtn = document.getElementById("signup-btn");
-
-    signupBtn.setAttribute("disabled");
-    
     try{
+        const signupBtn = document.getElementById("signup-btn");
+        signupBtn.setAttribute("disabled", "");
         await signUpNewUser({email, password, name})
         
-        alert("Successfully Registered")
+        const successElem = document.getElementById("success");
+        successElem.innerContent = "Successfully Registered";    
+        
+        console.log("Successfully Registered")
     }
     catch(e){
-        // const error = document.getElementById("error")
-        // error.innerHTML = e.message
-        console.log(e.message)
+        const errorElem = document.getElementById("error");
+        errorElem.innerHTML = e.message;
     }
 }
 
-window.signIn = async function (){
+window.login = async function (){
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     // const closeModal = document.getElementById("closeModal")

@@ -79,19 +79,23 @@
                     </div>
                     <img src="../images/olx-logo-vector-removebg-preview.png" width="50" alt="">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Sign Up</label>
-                      <input required type="text" class="form-control" id="name" placeholder="Name" />
-                      <br>
-                      <input required type="email" class="form-control" id="email" placeholder="Email"
+                      <!-- <form onsubmit="signUp(); return false"> -->
+                        <label for="exampleInputEmail1" class="form-label">Sign Up</label>
+                        <input required type="text" class="form-control" id="name" placeholder="Name" />
+                        <br>
+                        <input required type="email" class="form-control" id="email" placeholder="Email"
                         aria-describedby="emailHelp">
-                      <br>
-                      <input required type="password" class="form-control" id="password" placeholder="Password" />
-                      <br>
-                      <span>Already registered?
-                        <a class="btn btn-link" data-bs-toggle="modal" href="#exampleModalToggle3"
+                        <br>
+                        <input required type="password" class="form-control" id="password" placeholder="Password" />
+                        <br>
+                        <span>Already registered?
+                          <a class="btn btn-link" data-bs-toggle="modal" href="#exampleModalToggle3"
                           role="button">Login</a>
-                      </span>
-                      <button id="signup-btn" onclick="signUp()" class="btn btn-primary">Sign Up</button>
+                        </span> <br>
+                        <small id="success"></small>
+                        <small id="error"></small>
+                        <button id="signup-btn" onclick="signUp()" type="submit" class="btn btn-primary">Sign Up</button>
+                      <!-- </form> -->
 
                     </div>
                   </div>

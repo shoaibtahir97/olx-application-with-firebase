@@ -147,6 +147,15 @@
     justify-items: center;
 }
 
+#error{
+    font-weight: bold;
+    color: red;
+    
+}
+
+
+
+
 .mb-3 label{
     font-size: 24px;
     font-weight: bold;
