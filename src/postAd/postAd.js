@@ -1,4 +1,4 @@
-import {postAdToDB} from '../../config/firebase.js';
+import {postAdToDB, uploadImage} from '../../config/firebase.js';
 
 window.postAd = async function() {
     const title = document.querySelector("#title").value;

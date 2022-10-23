@@ -1,4 +1,4 @@
-import { signUpNewUser, signInFirebase, getAdsFromDb, isUserLogIn, postAdToDB, uploadImage,  } from '../config/firebase.js'
+import { signUpNewUser, signInFirebase, getAdsFromDb, isUserLogIn} from '../config/firebase.js'
 
 getAds()
 
@@ -29,26 +29,59 @@ window.login = async function () {
         const loginBtn = document.getElementById("loginBtn");
         loginBtn.setAttribute("disabled", "");
         await signInFirebase(loginEmail, loginPassword);
-
         alert("Logged in Successfully");
-        
-        
-    }   
+    }
     catch (e) {
         const loginError = document.getElementById("login-error");
         loginError.innerHTML = e.message;
     }
 }
+
 loginAndSell()
 
-function loginAndSell (){
-    try{
-        isUserLogIn()
+function loginAndSell() {
+    try {
+        isUserLogIn(changeNav)
     }
-    catch(e){
+    catch (e) {
         e.message
     }
 }
+
+function changeNav() {
+    let anchorTag = document.getElementById("login-sell");
+    let loggedIn = document.getElementById("logged-in");
+    let navItem3 = document.getElementById("nav-item-3");
+    let navItem2 = document.getElementById("nav-item-2");
+    let navItem1 = document.getElementById("nav-item-1");
+
+    anchorTag.setAttribute("href", "./postAd/postAd.html")
+    loggedIn.remove();
+
+    navItem3.innerHTML = `
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="../images/profilePic.png" width="40" alt="">
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#" id="logout">Log out</a></li>
+        </ul>`;
+    
+    navItem2.innerHTML = `
+        <a class="nav-link " aria-current="page" href="#"><img width="30px" src="../images/iconNotifications.svg"></a>
+        `;    
+    navItem1.innerHTML = `
+        <a class="nav-link " aria-current="page" href="#"><img width="30px" src="../images/iconChat.svg"></a>  
+        `;
+
+}
+
+
 
 // window.postAd = async function(){
 //     const adTitle = document.getElementById("title").value;
@@ -67,11 +100,11 @@ function loginAndSell (){
 
 async function getAds() {
     const ads = await getAdsFromDb();
-    
+
     for (let item of ads) {
         const adsElem = document.getElementById("ads");
         const ddiv = document.createElement("div");
-       
+
         ddiv.innerHTML += `
         <a href="">
             <div class="card" style="width: 18rem;">

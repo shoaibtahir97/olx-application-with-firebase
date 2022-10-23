@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 import { getFirestore, getDocs, collection, addDoc, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js"
 
@@ -65,44 +65,31 @@ async function getAdsFromDb() {
     return ads;
 }
 
-function isUserLogIn() {
+
+
+function isUserLogIn(callback) {
     let anchorTag = document.getElementById("login-sell");
-    let loggedIn = document.getElementById("logged-in");
-    let navItem3 = document.getElementById("nav-item-3");
-    let navItem2 = document.getElementById("nav-item-2");
-    let navItem1 = document.getElementById("nav-item-1");
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                console.log(uid)
-                anchorTag.setAttribute("href", "./postAd/postAd.html")
-                loggedIn.remove();
-                navItem3.innerHTML = `
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img src="../images/profilePic.png" width="40" alt="">
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>`;
-                navItem2.innerHTML = `
-                    <a class="nav-link " aria-current="page" href="#"><img width="30px" src="../images/iconNotifications.svg"></a>
-                    `;    
-                navItem1.innerHTML = `
-                <a class="nav-link " aria-current="page" href="#"><img width="30px" src="../images/iconChat.svg"></a>
-                    
-                `
-            } else {
-                anchorTag.setAttribute("href", "#exampleModalToggle")
-                console.log("no user log in")
-            }
-        });
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user;
+            // console.log(uid);
+            callback();
+        } else {
+            anchorTag.setAttribute("href", "    #exampleModalToggle")
+            console.log("no user log in")
+        }
+    });
 }
+
+// const logout = document.querySelector("#logout");
+// logout.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     signOut(auth).then(() => {
+//         console.log("User is signed out")
+//     }).catch(e){
+//         console.log()
+//     }
+// })
 
 export {
     signUpNewUser,
@@ -110,5 +97,6 @@ export {
     postAdToDB,
     uploadImage,
     getAdsFromDb,
-    isUserLogIn
+    isUserLogIn,
+    // logOut
 }
