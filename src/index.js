@@ -106,9 +106,9 @@ async function getAds() {
         const ddiv = document.createElement("div");
 
         ddiv.innerHTML += `
-        <a href="">
-            <div class="card" style="width: 18rem;">
-                <img src="${item.imageUrl}" class="card-img-top" alt="...">
+        <a>
+            <div onclick="goToDetailsPage('${item.id}')" class="card " style="width: 18rem;">
+                <img src="${item.imageUrl}"  class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${item.adTitle}</h5>
                     <p class="card-text">Rs ${item.adPrice}</p>
@@ -120,7 +120,9 @@ async function getAds() {
     }
 }
 
-
+window.goToDetailsPage = function (id) {
+    location.href= `/detail.html?id=${id}`
+}
 /*
 
 If user is new then run signup function 

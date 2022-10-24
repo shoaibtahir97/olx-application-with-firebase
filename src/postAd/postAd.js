@@ -11,8 +11,7 @@ window.postAd = async function() {
         const imageURL = await uploadImage(images);
 
         await postAdToDB(title, description, price, location, imageURL)
-        alert("Your ad has been posted successfully");
-
+        alert("Your ad has been posted successfully", location.href("http://127.0.0.1:5503/src/"));
     }
     catch(e){
         console.log("Error --->", e.message);
