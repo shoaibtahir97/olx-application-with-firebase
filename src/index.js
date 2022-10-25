@@ -121,7 +121,7 @@ async function getAds() {
 }
 
 window.goToDetailsPage = function (id) {
-    location.href= `/detail.html?id=${id}`
+    location.href= `/src/detail/detail.html?id=${id}`
 }
 /*
 
