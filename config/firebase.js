@@ -26,7 +26,6 @@ const db = getFirestore(app);
 
 const storage = getStorage(app);
 
-
 function signInFirebase(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
 }
@@ -65,36 +64,26 @@ async function getAdsFromDb() {
     return ads;
 }
 
-
-
-function isUserLogIn(callback) {
-    let anchorTag = document.getElementById("login-sell");
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            const uid = user;
-            // console.log(uid);
-            callback();
-        } else {
-            anchorTag.setAttribute("href", "    #exampleModalToggle")
-            console.log("no user log in")
-        }
-    });
-}
+// function isUserLogIn(callback) {
+//     let anchorTag = document.getElementById("login-sell");
+//     onAuthStateChanged(auth, (user) => {
+//         if (user) {
+//             const uid = user;
+//             // console.log(uid);
+//             callback();
+//         } else {
+//             anchorTag.setAttribute("href", "    #exampleModalToggle")
+//             console.log("no user log in")
+//         }
+//     });
+// }
 
 function getFirebaseAd(id) {
     const docRef = doc(db, "ads", id);
     return getDoc(docRef)
 }
 
-// const logout = document.querySelector("#logout");
-// logout.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     signOut(auth).then(() => {
-//         console.log("User is signed out")
-//     }).catch(e){
-//         console.log()
-//     }
-// })
+function 
 
 export {
     signUpNewUser,

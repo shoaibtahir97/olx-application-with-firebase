@@ -34,8 +34,20 @@ async function getAdDetails() {
             <p>${data.adDescription}</p>
         </div>
     </div>
-        
-
     `; 
+
+    const right = document.querySelector("#col-2");
+    right.innerHTML = `
+    <div class="price">
+        <h2>Rs ${data.adPrice}</h2>
+        <p>${data.adTitle}</p>
+        <small>${data.adLocation}</small>
+        </div>
+    <div class="seller">
+        <p>Seller Description</p>
+        <p>${data.userId}</p>
+        <button>Chat with Seller</button>
+    </div>
+    `;
 }
 

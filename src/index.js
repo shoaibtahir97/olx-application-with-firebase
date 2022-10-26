@@ -1,4 +1,4 @@
-import { signUpNewUser, signInFirebase, getAdsFromDb, isUserLogIn} from '../config/firebase.js'
+import { signUpNewUser, signInFirebase, getAdsFromDb, isUserLogIn, signOutUserFirebase} from '../config/firebase.js'
 
 getAds()
 
@@ -69,7 +69,7 @@ function changeNav() {
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#" id="logout">Log out</a></li>
+            <li><a class="dropdown-item" href="#" onclick="logout()">Log out</a></li>
         </ul>`;
     
     navItem2.innerHTML = `
@@ -81,22 +81,9 @@ function changeNav() {
 
 }
 
-
-
-// window.postAd = async function(){
-//     const adTitle = document.getElementById("title").value;
-//     const adDescription = document.getElementById("description").value;
-//     const adPrice = document.getElementById("price").value;
-//     const adImage = document.getElementById("image").files[0];
-//     try{
-//         const imageUrl = await uploadImage(adImage)   
-//         await postAdToDB(adTitle, adDescription, adPrice, imageUrl)
-//         alert("Ad posted successfully");
-//     }
-//     catch(e){
-//         console.log("Error -->", e.message);
-//     }
-// } 
+window.logout = async function() {
+    signOutUserFirebase();
+}
 
 async function getAds() {
     const ads = await getAdsFromDb();
