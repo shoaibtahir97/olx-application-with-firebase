@@ -1,6 +1,7 @@
-import { getFirebaseAd } from '../../config/firebase.js';
+import { getFirebaseAd, getFirebaseUser } from '../../config/firebase.js';
 
 let data;
+let userName;
 getAdDetails();
 
 async function getAdDetails() {
@@ -9,8 +10,12 @@ async function getAdDetails() {
 
     const doc = await getFirebaseAd(id)
     data = doc.data();
-    console.log("Data -->", data)
+    const userID = data.userId;
 
+    const doc1 = await getFirebaseUser(userID)
+    userName = doc1.data().name;
+    console.log(userName)
+    
     const left = document.querySelector("#col-1");
     left.innerHTML = `
     <img width="100%" src="${data.imageUrl}" />
@@ -33,9 +38,28 @@ async function getAdDetails() {
             <p>Description</p>
             <p>${data.adDescription}</p>
         </div>
-    </div>
-        
+    </div>`; 
 
-    `; 
+    const right = document.querySelector("#col-2");
+    right.innerHTML = `<div class="price">
+    <p>Rs ${data.adPrice}</p>
+    <p>${data.adTitle}</p>
+    <small>${data.adLocation}</small>
+</div>
+<div class="seller">
+    <h2>Seller Description</h2>
+        <div class="row">
+            <div class="col-3">
+                <img src="../../images/profilePic.png" width="60px" alt="">
+            </div>
+            <div class="col-9">
+                <p>${userName}</p>
+            </div>
+            <div class="col">
+                <button class="post-Btn">Chat with Seller</button>
+            
+            </div>
+        </div>
+</div>`
 }
 

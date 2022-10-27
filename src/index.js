@@ -1,4 +1,4 @@
-import { signUpNewUser, signInFirebase, getAdsFromDb, isUserLogIn, signOutUserFirebase} from '../config/firebase.js'
+import { signUpNewUser, signInFirebase, getAdsFromDb, isUserLogIn} from '../config/firebase.js'
 
 getAds()
 
@@ -11,7 +11,7 @@ window.signUp = async function () {
         signupBtn.setAttribute("disabled", "");
         await signUpNewUser({ email, password, name })
 
-        console.log("Successfully Registered");
+        alert("Successfully Registered");
 
     }
     catch (e) {

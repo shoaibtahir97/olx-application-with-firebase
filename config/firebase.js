@@ -38,7 +38,7 @@ async function signUpNewUser(userInfo) {
 }
 
 
-function addUserToDB(userInfo, uid) {
+async function addUserToDB(userInfo, uid) {
     const { email, name } = userInfo
     return setDoc(doc(db, "users", uid), { email, name })
 }
@@ -64,26 +64,29 @@ async function getAdsFromDb() {
     return ads;
 }
 
-// function isUserLogIn(callback) {
-//     let anchorTag = document.getElementById("login-sell");
-//     onAuthStateChanged(auth, (user) => {
-//         if (user) {
-//             const uid = user;
-//             // console.log(uid);
-//             callback();
-//         } else {
-//             anchorTag.setAttribute("href", "    #exampleModalToggle")
-//             console.log("no user log in")
-//         }
-//     });
-// }
+function isUserLogIn(callback) {
+    let anchorTag = document.getElementById("login-sell");
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user;
+            // console.log(uid);
+            callback();
+        } else {
+            anchorTag.setAttribute("href", "    #exampleModalToggle")
+            console.log("no user log in")
+        }
+    });
+}
 
 function getFirebaseAd(id) {
     const docRef = doc(db, "ads", id);
     return getDoc(docRef)
 }
 
-function 
+function getFirebaseUser(userID) {
+    const docRef = doc(db, "users", userID)
+    return getDoc(docRef)
+}
 
 export {
     signUpNewUser,
@@ -92,5 +95,6 @@ export {
     uploadImage,
     getAdsFromDb,
     isUserLogIn,
-    getFirebaseAd
+    getFirebaseAd,
+    getFirebaseUser
 }
