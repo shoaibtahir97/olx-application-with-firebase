@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
-import { getFirestore, getDocs, getDoc, collection, addDoc, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
+import { getFirestore, getDocs, getDoc, collection, addDoc, setDoc, doc, query, where } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js'
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js"
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -88,6 +88,35 @@ function getFirebaseUser(userID) {
     return getDoc(docRef)
 }
 
+async function checkChatRoom(adUserId){
+    const userId = auth.currentUser.uid;
+    const q = query(collection(db, "chatrooms"),
+        where (`users.${userId}`, "==", true),
+        where(`users.${adUserId}`,"==", true))
+        
+    const querySnapshot = await getDocs(q)
+
+    let room;
+    querySnapshot.forEach((doc)=> {
+        console.log(doc.id, "=>", doc.data());
+        room = {_id: doc.id, ...doc.data()}
+    })
+    return room;
+
+}   
+
+function createChatRoom(adUserId){
+    const userId = auth.currentUser.uid
+    const obj = {
+        users: {
+            [userId]: true,
+            [adUserId]: true
+        },
+        createdAt: Date.now()
+    }
+    return addDoc(collection(db, "chatrooms"), obj)
+}
+
 export {
     signUpNewUser,
     signInFirebase,
@@ -96,5 +125,8 @@ export {
     getAdsFromDb,
     isUserLogIn,
     getFirebaseAd,
-    getFirebaseUser
+    getFirebaseUser,
+    checkChatRoom,
+    createChatRoom
+
 }

@@ -6,16 +6,36 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start !important;   
+    
 }
 
 .details{
     border: 1px solid black;
+    border-radius: 5px;
     text-align: left;
+    margin-top: 30px;
 }
 
 .price{
     border: 1px solid black;
     text-align: left;
+}
+
+.container{
+    margin: 30px 0px 30px 0px;
+}
+
+.disabled{
+    color: #6F888A;
+}
+
+#col-1{
+    /* margin-right: 5px; */
+}
+
+.bold{
+    font-weight: bolder;
+    font-size: 26px;
 }
 
 .post-Btn{
@@ -25,4 +45,29 @@
     padding: 10px 30px;
     font-weight: bold;
     width: 100%;
+}
+
+.price{
+    padding:10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.Rs{
+    font-weight: bolder;
+    font-size: 34px;
+}
+
+.ad-title{
+    color: #6F888A;
+    font-size: 20px;
+}
+
+.seller{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.seller > p{
+    font-size: 22px;
 }
