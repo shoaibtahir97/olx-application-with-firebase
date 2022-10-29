@@ -9,8 +9,8 @@ window.getChatDetails = async function () {
 
     const room = await getFirebaseChat(chatid) //firebase k function me chat ki id phenk di aur chatroom ka data mangwa lia 
     
-//    let data = room.data()
+   let data = room.data()
 
-    console.log(room);
+    console.log(data);
 }
 

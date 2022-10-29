@@ -118,8 +118,8 @@ function createChatRoom(adUserId) {
 }
 
 async function getFirebaseChat(chatId) {
-    // const docRef = doc(db, "chatrooms", chatId);
-
+    const docRef = doc(db, "chatrooms", chatId);
+    return getDoc(docRef)
     // const snaps = await getDoc(docRef)
 
     // let obj;
@@ -129,11 +129,11 @@ async function getFirebaseChat(chatId) {
     //     return obj;
     // })
 
-    const querySnapshot = await getDocs(collection(db, "chatrooms", chatId));
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-    });
+    // const querySnapshot = await getDocs(collection(db, "chatrooms", chatId));
+    // querySnapshot.forEach((doc) => {
+    //     // doc.data() is never undefined for query doc snapshots
+    //     console.log(doc.id, " => ", doc.data());
+    // });
 
 }
 
