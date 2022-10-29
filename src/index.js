@@ -93,7 +93,7 @@ async function getAds() {
         const ddiv = document.createElement("div");
 
         ddiv.innerHTML += `
-        <a>
+        
             <div onclick="goToDetailsPage('${item.id}')" class="card " style="width: 18rem;">
                 <img src="${item.imageUrl}"  class="card-img-top" alt="...">
                 <div class="card-body">
@@ -101,7 +101,7 @@ async function getAds() {
                     <p class="card-text">Rs ${item.adPrice}</p>
                 </div>
             </div>
-        </a>
+        
       `
         adsElem.appendChild(ddiv);
     }

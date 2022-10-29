@@ -1,4 +1,4 @@
-.carousel-img{
+.carousel-img {
     width: 100%;
 }
 
@@ -6,27 +6,27 @@
     margin: 20px 0px 20px 0;
 }
 
-.cards{
+.cards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
 }
 
-.navbar .container .collapse  {
+.navbar .container .collapse {
     justify-content: flex-end;
 }
 
-.navbar-nav{
+.navbar-nav {
     display: flex;
     /* align-items: center; */
 }
 
-.sellBtn{
+.sellBtn {
     position: relative;
 }
 
-.centered{
+.centered {
     position: absolute;
     width: 54px;
     top: 50%;
@@ -34,7 +34,7 @@
     transform: translate(-50%, -50%);
 }
 
-@media only screen and (max-width: 991px){
+@media only screen and (max-width: 991px) {
     .centered {
         position: absolute;
         top: 50%;
@@ -43,7 +43,8 @@
 
     }
 }
-@media only screen and (max-width: 767px){
+
+@media only screen and (max-width: 767px) {
     .centered {
         position: absolute;
         top: 50%;
@@ -53,7 +54,7 @@
     }
 }
 
-@media only screen and (max-width: 425px){
+@media only screen and (max-width: 425px) {
     .centered {
         position: absolute;
         top: 50%;
@@ -62,7 +63,8 @@
 
     }
 }
-@media only screen and (max-width: 325px){
+
+@media only screen and (max-width: 325px) {
     .centered {
         position: absolute;
         top: 50%;
@@ -71,24 +73,25 @@
 
     }
 }
-.centered > span {
+
+.centered>span {
     color: black;
 }
- 
+
 .modal-header {
     display: flex;
     flex-direction: column;
 }
 
-.tag-line{
+.tag-line {
     text-align: center;
 }
 
-.fa-envelope{
+.fa-envelope {
     margin-right: 10px;
 }
 
-.continue{
+.continue {
     text-align: center;
 }
 
@@ -97,7 +100,7 @@
     text-align: center;
 } */
 
-.login-account{
+.login-account {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -105,7 +108,7 @@
     /* height: 300px;  */
 }
 
-.login-account a{
+.login-account a {
     border: 2px solid black;
     border-radius: 5px;
     margin: 10px;
@@ -116,7 +119,7 @@
     height: 50px;
 }
 
-.login-account a:hover{
+.login-account a:hover {
     color: black;
     border: 4px solid black;
 }
@@ -127,7 +130,7 @@
     font-size: 14px;
 }
 
-.modal-header2{
+.modal-header2 {
     padding: 10px 20px;
     text-align: center;
     /* width: 70%; */
@@ -136,39 +139,36 @@
     justify-content: center;
 }
 
-.modal-header2 img{
+.modal-header2 img {
     margin: 20px auto;
 }
 
-.modal-header2.mb-3{
+.modal-header2.mb-3 {
     /* width: 50%; */
     display: flex;
     flex-direction: column;
     justify-items: center;
 }
 
-#error, #login-error{
+#error,
+#login-error {
     font-weight: bold;
     color: red;
-    
 }
 
-
-
-
-.mb-3 label{
+.mb-3 label {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.mb-3 button{
+.mb-3 button {
     width: 100%;
     margin-top: 40px;
     border-radius: 2px;
 }
 
-.modal-header2 #modal-buttons{
+.modal-header2 #modal-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -176,32 +176,34 @@
 }
 
 
-#ads{
+#ads {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
-    /* width: 80%; */
-    
 }
 
-.card{
+.card {
     margin: 15px;
-    height: 100px;    
+    height: 100px;
 }
 
-.card-img-top{
+.card:hover {
+    cursor: pointer;
+}
+
+.card-img-top {
     height: 161px;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
-.card-body{
+.card-body {
     text-decoration: none;
 }
 
-.card-title{
+.card-title {
     text-decoration: none;
     color: black;
 }

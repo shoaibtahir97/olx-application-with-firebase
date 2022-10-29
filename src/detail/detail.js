@@ -11,7 +11,8 @@ async function getAdDetails() {
     
     const doc = await getFirebaseAd(id)
     data = doc.data();
-    console.log(data)
+    
+    
     const userID = data.userId;
     const doc1 = await getFirebaseUser(userID)
     userName = doc1.data().name;
@@ -65,21 +66,26 @@ async function getAdDetails() {
     </div>`;
 }
 
+
+
 window.initiateChat = async function (){
     let userId = data.userId;
-    console.log(data.userId)
+    
+
     let chatroom = await checkChatRoom(userId);
 
+    
     if(!chatroom){
-        chatroom = await createChatRoom(userId)
-        alert("chatroom created ");
+        chatroom = await createChatRoom(userId);
+
     }
     else{
-        alert('chatroom exists')
+        
     }
-
-    const chatId = chatroom._id
-
-    // location.href = `chat.html?id=${chatId}`
-
+    const chatId =  chatroom._id
+    
+    location.href = `/src/chat/chat.html?id=${chatId}`
 }
+
+
+// Azan Break

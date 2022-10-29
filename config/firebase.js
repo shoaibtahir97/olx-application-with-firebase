@@ -88,24 +88,24 @@ function getFirebaseUser(userID) {
     return getDoc(docRef)
 }
 
-async function checkChatRoom(adUserId){
-    const userId = auth.currentUser.uid;
-    const q = query(collection(db, "chatrooms"),
-        where (`users.${userId}`, "==", true),
-        where(`users.${adUserId}`,"==", true))
-        
-    const querySnapshot = await getDocs(q)
+async function checkChatRoom(adUserId) { //seller id
+    const userId = auth.currentUser.uid; //logged in user
+    const q = query(collection(db, "chatrooms"), //check if db has chatroom and 
+        where(`users.${userId}`, "==", true),
+        where(`users.${adUserId}`, "==", true))
 
+    const querySnapshot = await getDocs(q)
     let room;
-    querySnapshot.forEach((doc)=> {
-        console.log(doc.id, "=>", doc.data());
-        room = {_id: doc.id, ...doc.data()}
+
+    await querySnapshot.forEach((doc) => {
+        console.log(doc.id, doc.data())
+
+        room = { _id: doc.id, ...doc.data() }
     })
     return room;
+}
 
-}   
-
-function createChatRoom(adUserId){
+function createChatRoom(adUserId) {
     const userId = auth.currentUser.uid
     const obj = {
         users: {
@@ -115,6 +115,26 @@ function createChatRoom(adUserId){
         createdAt: Date.now()
     }
     return addDoc(collection(db, "chatrooms"), obj)
+}
+
+async function getFirebaseChat(chatId) {
+    // const docRef = doc(db, "chatrooms", chatId);
+
+    // const snaps = await getDoc(docRef)
+
+    // let obj;
+    // snaps.forEach((doc) => {
+    //     console.log(doc.id, doc.data())
+    //     obj = { id: doc.id, ...doc.data() };
+    //     return obj;
+    // })
+
+    const querySnapshot = await getDocs(collection(db, "chatrooms", chatId));
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+
 }
 
 export {
@@ -127,6 +147,8 @@ export {
     getFirebaseAd,
     getFirebaseUser,
     checkChatRoom,
-    createChatRoom
+    createChatRoom,
+    getFirebaseChat
+
 
 }
